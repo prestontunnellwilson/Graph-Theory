@@ -1,0 +1,144 @@
+\documentclass{article}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage[margin = 1in]{geometry}
+
+\begin{document}
+
+\title{
+Review
+}
+
+\author{
+Preston Tunnell Wilson }
+
+\date{
+October 8, 2014 }
+
+\maketitle
+
+\section{Overview of Graphs}
+\subsection{Definition}
+A $graph$ $G$ is defined as a set of vertices $V$ and a set of edges $E$.
+Note that $E$ is actually a multiset-duplicate elements are allowed.
+
+A $loop$ is a vertex connected to itself by one edge.
+
+A $simple \ graph$ has no loops and no multiple edges.
+
+The $degree$ of a vertex is the number of edges coming into it or leaving it.
+
+A $complete \ graph$ is one in which every two distinct vertices are adjacent.
+A complete graph on $n$ vertices is denoted $K_n$.
+
+A $connected \ graph$ is one such that there exists a walk from every two vertices.
+
+The number of edges on a complete graph is $\frac{n(n-1)}{2} = {n \choose 2}$.
+The sum of degrees is two times the number of edges.
+
+\subsection{Isomorphy}
+Two graphs being $isomorphic$ is like being equivalent but in a graph theory sense.
+
+$f$ is an $isomorphy$ if $f$ is a bijection $V \rightarrow V'$ and $\forall x, y \in V,
+(x, y) \in E <=> (f(x), f(y)) \in E'$.
+Basically, you can remap every vertex to a corresponding one in the other graph
+while maintaining edge relationships.
+
+\subsection{Traversing a Graph}
+A $walk$ is a set of vertices $\lbrace v_0, v_1, ... \rbrace$ such that $(v_{i-1}, v_i) \in E$.
+
+A $tour$ is a walk with $v_0 = v_i$.
+
+A $path$ is a walk such that each vertex appears at most once.
+
+A $cycle$ is a closed path such that $v_0 = v_i$. 
+Note that a loop counts as a cycle.
+
+A graph is connected if there exists a walk between every $2$ vertices.
+
+A $subgraph$ is defined as $G'=(V', E')$, where $V'\subset V$ and $E'\subset E$: 
+$e\in E' => a,b \ in V', (a, b) = e$.
+
+An $induced \ subgraph$ is defined as a subset of the vertices and all edges between those vertices.
+
+A $component$ is a maximum induced subgraph, where maximum means that we cannot add any more vertices
+and remain induced.
+
+A $tree$ is a connected graph with no cycles. A $leaf$ is a vertex on a tree with degree $1$.
+
+\subparagraph{Eulerian junk}
+A $trail$ is a walk that travels each edge $\leq 1$ time.
+
+An $Euler \ trail$ of $G$ is a trail that travels every edge of $G$.
+An $Euler \ tour$ is an Euler trail such that the start and ending vertex are the same.
+
+If we have an Eulerian trail, then at most $2$ vertices have an odd degree.
+
+Theorem: if $G$ is connected and ever degree is even, then $G$ has an Eulerian tour.
+If $G$ is connected and all but two degrees are even, then $G$ has an Eulerian trail.
+
+Note that we might have an Eulerian tour when a graph is not connected,
+for example, if one of the components is an isolated vertex while the other component has an Eulerian tour...
+
+\section{Hamiltonian Cycles and Paths}
+\subsection{Definitions}
+A cycle such that every vertex is included exactly once is a $Hamiltonian \ cycle$,
+whereas a path with the same quality is a $Hamiltonian \ path$.
+In other words, the only way they differ is whether the end vertex is our start vertex.
+
+A graph is $traceable$ if there exists a Hamiltonian path through it, while
+a graph is $Hamiltonian$ if there is a Hamiltonian cycle.
+
+\subsection{Tools}
+If $G$ is Hamiltonian, then by deleting $k$ vertices, we obtain $\leq k$ components.
+We note that this is necessary, not sufficient. Peterson's graph is a counterexample:
+we can delete k vertices and obtain less than k components, but Peterson's graph
+is not Hamiltonian.
+
+\section{Planarity and Duality}
+\subsection{Planarity}
+A $plane \ graph$ is a graph drawn on the plane with no edge crossings.
+A $planar \ graph$ is a graph that can be drawn on the plane.
+
+$Euler's Formula$: for plane, connected graphs, \[e + 2 = r + n\]
+$G$ is planar $<=>$ $G$ can be drawn on the surface of a sphere without crossings.
+
+Thus we can make the outer region whichever region we want.
+
+The skeletons of polyhedra are planar graphs, as well as 3-connected. 
+This means that we can delete up to two of any vertices and still be connected.
+
+\subsection{Duality}
+We denote the dual of $G$ as $G*$.
+If two regions have $k$ edges in common, then the corresponding vertices in $G*$ have $k$ edges between them as well.
+
+\section{Colorings}
+\subsection{Definitions}
+\subparagraph{Vertex Colorings}
+A $coloring \ of \ vertices$ is a function $c:H(V)\rightarrow\lbrace1,2,...,r\rbrace$ such that
+if $(a,b) \in E(H)$, then $c(a) \neq c(b)$. 
+
+The $chromatic \ number$ is the minimum number of colors $r$ such that
+$r$ colors suffice, as in there exists a coloring with $r$ colors.
+This is denoted as $X\left(G\right)$.
+
+Another name for this complete subgraph is a $clique$.
+
+The size of the max clique is the $clique \ size$: $\omega\left(G\right)$.
+
+If we can find a complete subgraph, we have to have at least that number of vertices number of colors.
+\[X\left(G\right) \geq \omega\left(G\right)\]
+
+An $independent \ vertex \ set$ is a set of vertices with no edges between any of them.
+We denote the maximum size of an independent set as $\alpha\left(G\right)$.
+
+\subparagraph{Edge Colorings}
+$X_e\left(G\right)$ or $X'\left(G\right)$ denotes the minimum number to color edges such that
+a vertex has no two edges of the same color. This is the $edge \ chromatic \ number$ or the $chromatic \ index$.
+
+The max degree of $G$ is denoted $\Delta(G)$.
+
+An $independent \ edge \ set$ or a $matching$ is a set of edges with no vertices in common.
+We denote the maximum size of a matching with $v(G)$.
+
+\end {document}
